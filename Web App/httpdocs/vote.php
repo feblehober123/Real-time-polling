@@ -12,7 +12,13 @@ $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING ); // Turn on db erro
 
 if(isset($_POST['vote_for']) && isset($_POST['vote_sessionid'])){
 	vote::addVote($_POST['vote_for'], $_POST['vote_sessionid']);
-}else{
+}else{	//if neither posting vote or option give output
 	echo vote::getLastVoteTime();
+}
+
+if(isset($_POST['option_name']) && isset($_POST['option_sessionid']) {
+	vote::addOption($_POST['option_name'], $_POST['option_sessionid']);
+} else {
+	echo vote::getLastOptionTime();
 }
 ?>
