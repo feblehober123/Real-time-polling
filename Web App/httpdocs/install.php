@@ -28,8 +28,8 @@ $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
 // Install the database structure - TODO improve database.
 echo '<li>Building database Structure</li>';
-$db->exec('
 
+$db->exec('
 CREATE TABLE  '.$db->tableName('votes').' (
 `vote_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `vote_for` VARCHAR( 255 ) NOT NULL ,
@@ -37,6 +37,16 @@ CREATE TABLE  '.$db->tableName('votes').' (
 `vote_topicID` INT NOT NULL DEFAULT 0,
 `vote_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = INNODB;
+');
+
+$db->exec('
+CREATE TABLE  '.$db->tableName('options').' (
+`option_ID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+`option_name VARCHAR(255) NOT NULL,
+`option_sessionid` VARCHAR(255) NOT NULL,
+`option_topicID` IN NOT NULL DEFAULT 0,
+`option_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = INNODB:
 ');
 
 echo '</ul>';
