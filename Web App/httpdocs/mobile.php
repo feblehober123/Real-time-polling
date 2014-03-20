@@ -22,10 +22,15 @@
 	<p>Select someone from the list below to vote for them.</p>
 	<br />
 		<ul data-role="listview" data-inset="true" data-filter="true" id="people-list">
-			<li><a href="#">Tom</a></li>
-			<li><a href="#">Mike</a></li>
-			<li><a href="#">Sam</a></li>
-			<li><a href="#">Bex</a></li>
+			<?php
+			require('../inc/init.inc.php');
+			$options = vote::getOptions();
+			foreach($options as $name => $key) {
+				echo("<li><a href='#'>$name</a></li>");
+			}
+			?>
+			<li><input id="option-name" type="text" />
+			<!--finish this, add js to interact with button-->
 		</ul>
 	</div><!-- /content -->
 
