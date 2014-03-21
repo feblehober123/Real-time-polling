@@ -52,7 +52,7 @@ $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING ); // Turn on db erro
 		</thead>
 		<tbody>
 			<?php
-				$voteOptions = array('Tom'=>true, 'Mike'=>true, 'Sam'=>true, 'Bex'=>true);
+				$voteOptions = vote::getOptions();
 				$votesCounts = vote::getVotesCounts();
 				if(is_array($votesCounts)){foreach($votesCounts as $votesCount){
 					unset($voteOptions[$votesCount["vote_for"]]);
