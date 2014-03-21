@@ -29,8 +29,7 @@
 				echo("<li><a href='#'>$name</a></li>");
 			}
 			?>
-			<li><input id="option-name" type="text" />
-			<!--finish this, add js to interact with button-->
+			<li><input id="option-name" type="text" /><button id="option-submit">submit option</button></li>
 		</ul>
 	</div><!-- /content -->
 
@@ -41,7 +40,6 @@ var clickedButton = false;
 if(localStorage.UUID == undefined){
 	localStorage.UUID = Math.floor(Math.random()*10000000);
 }
-
 
 $('#people-list a').bind('click', function(){
 	clickedButton = $(this);
@@ -62,7 +60,26 @@ $('#people-list a').bind('click', function(){
 	  dataType: 'html'
 	});
 	 
-});	
+});
+
+$('#option-submit button').bind('click', function() {
+	localStorage.optionName = html.getElementById('option-name').value;
+	$.ajax({
+	  type: 'POST',
+	  url: '/option.php',
+	  data: 'option_name='+localStorage.optionName+'&option_sessionid=web-'+localStorage.UUID,
+	  success: function(data){
+	  	clickedButton.simpledialog({
+	        'mode' : 'blank',
+	        'prompt': false,
+	        'forceInput': false,
+	        'useModal':true,
+	        'fullHTML' : "<p>Vote set to: "+localStorage.option_name+"</p><a rel='close' data-role='button' href='#' id='simpleclose'>Close</a>"
+	    });
+	  },
+	  dataType: 'html'
+	});
+})
 </script>
 </body>
 </html>
