@@ -20,6 +20,22 @@ function checkForVotes(){
 	});
 }
 
+function checkForOptions(){
+	$.ajax({
+	  type: 'GET',
+	  url: '/option.php',
+	  success: function(data){
+	  	if(data != last_option_time){
+	  		history.go(0)
+	  	}else{
+	  		setTimeout('checkForOptions();', 3500)
+	  	}
+	  },
+	  dataType: 'html'
+	});
+}
+
 $(document).ready(function(){
 	checkForVotes();
+	checkForOptions();
 });
