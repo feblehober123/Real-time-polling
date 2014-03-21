@@ -85,6 +85,7 @@ $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING ); // Turn on db erro
 	?>
 	
 	<div id="last_vote_time"><?php echo vote::getLastVoteTime(); ?></div>
+	<div id="last_option_add_time"><?php echo vote::getLastOptionAddTime(); ?></div>
     	
     </div>
     <footer>
