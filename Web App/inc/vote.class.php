@@ -44,15 +44,15 @@ class vote{
 		
 		$values = array('option_topicID' => $option_topicID);	
 			
-		$query = $db->prepare('SELECT * FROM '.$db->tableName('options').' '.$db->where($values).' ORDER BY `option_time` DESC;');
+		$query = $db->prepare('SELECT `option_name` FROM '.$db->tableName('options').' '.$db->where($values).' ORDER BY `option_time` DESC;');
 		$query->execute($values);
 		//return $query->fetchAll(PDO::FETCH_ASSOC);
 		
-		$names = Array();
-		foreach($query->fetchAll(PDO::FETCH_ASSOC) as $num => $name) {
-			$names[$name] = True;	//This orders the names in an array with the format
-		}				//used in show.php.
-		return $names 			//This may not be neccesary.
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		foreach($result as $num => $name) {
+			$names[$name['option_name']] = True;	//This orders the names in an array with the format
+		}						//used in show.php.
+		return $name					//This may not be neccesary.
 	}
 	
 	public static function getVotesCounts($vote_topicID=1){
