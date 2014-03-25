@@ -41,14 +41,13 @@ CREATE TABLE  '.$db->tableName('votes').' (
 
 $db->exec('
 CREATE TABLE  '.$db->tableName('options').' (
-`option_ID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-`option_name VARCHAR(255) NOT NULL,
+`option_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+`option_name` VARCHAR(255) NOT NULL,
 `option_sessionid` VARCHAR(255) NOT NULL,
-`option_topicID` IN NOT NULL DEFAULT 0,
+`option_topicID` INT NOT NULL DEFAULT 0,
 `option_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE = INNODB:
+) ENGINE = INNODB;
 ');
-
 echo '</ul>';
 echo '<p>Install finished. </p>
 <p>Its a good idea to delete this file (or hide it) so your website is not reinstalled.</p>';
