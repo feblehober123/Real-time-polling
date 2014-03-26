@@ -1,3 +1,6 @@
+<?php
+	require('../inc/init.inc.php');
+?>		
 <!DOCTYPE html> 
 <html> 
 	<head> 
@@ -23,10 +26,16 @@
 	<br />
 		<ul data-role="listview" data-inset="true" data-filter="true" id="people-list">
 			<?php
-			require('../inc/init.inc.php');
+			//Connect to db, else assume DB isn't installed.
+			try {
+				$db = new db('mysql:host='.db_host.';dbname='.db_database,db_username,db_password);
+			}catch (Exception $e) {
+				die('<h1>Need to Install</h1><p>The database is not installed. <a href="install.php">Visit the installer to install it.</a></p>');
+			}
+			
 			$options = vote::getOptions();
-			foreach($options as $name => $key) {
-				echo("<li><a href='#'>$name</a></li>");
+			foreach($options as $key) {
+				echo("<li><a href='#'>$key</a></li>");
 			}
 			?>
 			<li><input id="option-name" type="text" /><button id="option-submit">submit option</button></li>
@@ -79,7 +88,7 @@ $('#option-submit button').bind('click', function() {
 	  },
 	  dataType: 'html'
 	});
-})
+});
 </script>
 </body>
 </html>
