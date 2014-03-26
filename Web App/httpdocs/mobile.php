@@ -34,8 +34,8 @@
 			}
 			
 			$options = vote::getOptions();
-			foreach($options as $key) {
-				echo("<li><a href='#'>$key</a></li>");
+			foreach($options as $name => $key) {	//key is not a key, it will always be [True]
+				echo("<li><a href='#'>$name</a></li>");
 			}
 			?>
 			<li><input id="option-name" type="text" /><button id="option-submit">submit option</button></li>

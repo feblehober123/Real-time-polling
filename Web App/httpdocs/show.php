@@ -64,7 +64,7 @@ $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING ); // Turn on db erro
 					<?php 
 				}}
 				
-				if(is_array($voteOptions)){foreach($voteOptions as $name => $voteOption){
+				if(is_array($voteOptions)){foreach($voteOptions as $name => $key){	//key is not a key, it will always be [True]
 					?>
 			<tr>
 				<th scope="row"><?php echo $name; ?></th>
