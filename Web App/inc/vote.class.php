@@ -52,7 +52,7 @@ class vote{
 		foreach($result as $num => $name) {
 			$names[$name['option_name']] = True;	//This orders the names in an array 
 		}											//with the format used in show.php
-		return $name;								//This may not be neccesary.
+		return $names;								//This may not be neccesary.
 	}
 	
 	public static function getVotesCounts($vote_topicID=1){
