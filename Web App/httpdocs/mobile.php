@@ -71,8 +71,9 @@ $('#people-list a').bind('click', function(){
 	 
 });
 
-$('#option-submit button').bind('click', function() {
-	localStorage.optionName = html.getElementById('option-name').value;
+$('#option-submit').bind('click', function() {
+	clickedButton = $(this);
+	localStorage.optionName = $('#option-name').val();
 	$.ajax({
 	  type: 'POST',
 	  url: '/option.php',
@@ -83,7 +84,7 @@ $('#option-submit button').bind('click', function() {
 	        'prompt': false,
 	        'forceInput': false,
 	        'useModal':true,
-	        'fullHTML' : "<p>Vote set to: "+localStorage.option_name+"</p><a rel='close' data-role='button' href='#' id='simpleclose'>Close</a>"
+	        'fullHTML' : "<p>Option set to: "+localStorage.optionName+"</p><a rel='close' data-role='button' href='#' id='simpleclose'>Close</a>"
 	    });
 	  },
 	  dataType: 'html'
