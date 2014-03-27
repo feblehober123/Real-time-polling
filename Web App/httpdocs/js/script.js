@@ -4,6 +4,7 @@
 
 $('#voteResults').visualize({type: 'pie', height: '300px', width: '420px'});
 var last_vote_time = $("#last_vote_time").text();
+var last_option_add_time = $("#last_option_add_time").text();
 
 function checkForVotes(){
 	$.ajax({
@@ -25,7 +26,7 @@ function checkForOptions(){
 	  type: 'GET',
 	  url: '/option.php',
 	  success: function(data){
-	  	if(data != last_option_time){
+	  	if(data != last_option_add_time){
 	  		history.go(0)
 	  	}else{
 	  		setTimeout('checkForOptions();', 3500)

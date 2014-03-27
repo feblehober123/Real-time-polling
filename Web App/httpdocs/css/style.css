@@ -79,8 +79,9 @@ td { vertical-align: top; }
 	display: none;
 }
 
-
-
+#last_option_add_time{
+	display: none;
+}
 
 
 
