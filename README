@@ -1,2 +1,1 @@
-A fork of MikeRogers0/Real-time-polling that should allow the poll options to be added during the poll.
-Currently untested.
+A fork of MikeRogers0/Real-time-polling that allows new poll options to be added during the poll.
